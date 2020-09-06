@@ -50,6 +50,8 @@ export class TagPicComponent implements OnInit {
       var bt=document.createElement('button');
       bt.innerHTML='getScope';
       bt.onclick=this.setfanwei.bind(this);
+      console.log("this is test to bind or just use");
+      console.log("this",this);
       pr.appendChild(bt);
 
       var buttonsdiv=document.createElement('button');
@@ -139,8 +141,8 @@ export class TagPicComponent implements OnInit {
 
       var canvasi=document.createElement('canvas');
       canvasi.id='canvas'+(i+1);
-      canvasi.width=1440;
-      canvasi.height=960;
+      canvasi.width=2880;
+      canvasi.height=1920;
       
       
       
@@ -184,7 +186,7 @@ export class TagPicComponent implements OnInit {
     console.log(Number(x_min),Number(y_min),Number(x_max),Number(y_max),angle);
     //var c=this.ImageToCanvas();
     //var ctx=c.getContext("2d");
-    image.crossOrigin="";
+    //image.crossOrigin="";
 
 
       //画标注图
