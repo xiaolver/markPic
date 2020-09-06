@@ -4,14 +4,14 @@ import { TagPicComponent } from './tag-pic/tag-pic.component';
 
 const routes: Routes = [
   {
-    path:"",
-    redirectTo:"tagpic",
-    pathMatch:"full",
+    path: '',
+    redirectTo: 'tagpic',
+    pathMatch: 'full',
   }
   ,
   {
-    path:"tagpic",
-    component:TagPicComponent,
+    path: 'tagpic',
+    component: TagPicComponent,
   }
 ];
 
