@@ -1,41 +1,89 @@
+<div id="workstation">
+  <div id="lefttable">
+    <div>
+      <div>
+        <input
+          type="text"
+          id="picurl"
+          cols="30"
+          rows="10"
+          [(ngModel)]="model.picurl"
+        />
+      </div>
+      <div>
+        <button (click)="getImgbyHttp()">getimagebyHttp</button>
+      </div>
+      <div>
+        <div>
+          <input
+            #uploadInput
+            id="upload-input"
+            style="display: none"
+            type="file"
+            multiple="multiple"
+          />
+          <!-- 自定义按钮效果 -->
+          <div style="text-align: top">
+            <!-- 然而我不听说要“点上传文件”根本不可能知道这玩意能点 -->
+            <span
+              style="font-size: 12px; cursor: pointer"
+              (click)="uploadInput.click()"
+              >上传文件：</span
+            >
+          </div>
+        </div>
+      </div>
 
-        <div id="workstation">
-            <div id='lefttable'>
-                <div>
-                    <div>
-                        <input type="text" id="picurl" value="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1599028409376&di=e4b60287b48c4f364045bbd99649e747&imgtype=0&src=http%3A%2F%2Fa1.att.hudong.com%2F05%2F00%2F01300000194285122188000535877.jpg" cols="30" rows="10" >
-                    </div>
-                    <div (click)="downloadIamge()">
-                        <button>
-                            getimagebyHttp
-                        </button>
-                    </div>
-                    <div>
-                        <!-- 要将父布局的position设置为relative，父布局将无法包裹input -->
-  <div style="position: relative;">
-    <!--设置input的position为absolute，使其不按文档流排版，并设置其包裹整个布局 -->
-    <!-- 设置opactity为0，使input变透明 -->
-    <!-- 只接受jpg，gif和png格式 -->
-        <input id="upload-input" style="position: absolute; top: 0; bottom: 0; left: 0;right: 0; opacity: 0;" type="file" multiple="multiple"/>
-    <!-- 自定义按钮效果 -->
-    <div style="text-align: top">
-      <span style="font-size: 12px;">上传文件：</span>
+      <div>
+        <button (click)="getImgbyPath()">getimagebyPath</button>
+      </div>
     </div>
   </div>
-                    </div>
-
-                        <div (click)="getImgbyPath()">
-                            <button>
-                                getimagebyPath
-                            </button>
-                        </div>
-                </div>
-                
-            </div>
-           
-        </div>
-        <div id="picResolve">
-
-
-        </div>
-       
+</div>
+<div id="picResolve">
+  <div>
+    <div>
+      <label for="crane">crane</label
+      ><input width="30" height="10" id="crane" [(ngModel)]="model.crane" />
+    </div>
+    <div>
+      <label for="lane">lane</label
+      ><input width="30" height="10" id="lane" [(ngModel)]="model.lane" />
+    </div>
+    <div>
+      <label for="video">video</label
+      ><input width="30" height="10" id="video" [(ngModel)]="model.video" />
+    </div>
+    <div>
+      <label for="lorr">lorr</label
+      ><input width="30" height="10" id="lorr" [(ngModel)]="model.lorr" />
+    </div>
+    <div>
+      <label for="degree">degree</label
+      ><input width="30" height="10" id="degree" [(ngModel)]="model.degree" />
+    </div>
+    <div>
+      <label for="xmin">xmin</label
+      ><input width="30" height="10" id="xmin" [(ngModel)]="model.xmin" />
+    </div>
+    <div>
+      <label for="xmax">xmax</label
+      ><input width="30" height="10" id="xmax" [(ngModel)]="model.xmax" />
+    </div>
+    <div>
+      <label for="ymin">ymin</label
+      ><input width="30" height="10" id="ymin" [(ngModel)]="model.ymin" />
+    </div>
+    <div>
+      <label for="ymax">ymax</label
+      ><input width="30" height="10" id="ymax" [(ngModel)]="model.ymax" />
+    </div>
+  </div>
+  <button (click)="setfanwei()">getScope</button>
+  <div id="db"><button (click)="clip()">clip</button></div>
+  <div *ngFor="let imgurl of model.imgurls; let i = index">
+    <img #pic [src]="imgurl" />
+    <canvas #canvasshowpic></canvas>
+    <canvas #canvasclip width="1440" height="960"></canvas>
+  </div>
+</div>
