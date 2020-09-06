@@ -1,0 +1,16 @@
+#workstation{
+    display: -webkit-inline-flex;
+    flex-direction: row;
+}
+#left{
+    display: -webkit-inline-flex;
+    height: 80%;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.right{
+    display: -webkit-inline-flex;
+    height: 80%;
+    flex-direction: column;
+    justify-content: space-around;
+}
