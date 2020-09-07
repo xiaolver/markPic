@@ -11,9 +11,8 @@ export class GetScopeService {
   getScope(crane: string, lane: string)
   {
     // 装配crane lane
-    let url ='http://192.168.1.177:8080/scope/get?crane=2';
-    url = 'http://10.2.4.52:30011/scope/get/lane?crane=1&lane=1';
-    const info = null;
+    let url ;
+    url = 'http://10.2.4.52:30011/scope/get/lane?crane='+crane+'&lane='+lane;
     return this.http.get(url);
 
   }
