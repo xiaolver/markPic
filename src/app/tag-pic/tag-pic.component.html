@@ -44,19 +44,82 @@
   <div>
     <div>
       <label for="crane">crane</label
-      ><input width="30" height="10" id="crane" [(ngModel)]="model.crane" />
+      ><input
+        width="30"
+        height="10"
+        id="crane"
+        list="craneItem"
+        [(ngModel)]="model.crane"
+      />
+      <datalist id="craneItem">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+        <option>13</option>
+        <option>14</option>
+        <option>15</option>
+        <option>16</option>
+      </datalist>
     </div>
     <div>
       <label for="lane">lane</label
-      ><input width="30" height="10" id="lane" [(ngModel)]="model.lane" />
+      ><input
+        width="30"
+        height="10"
+        id="lane"
+        list="laneItem"
+        [(ngModel)]="model.lane"
+      /><datalist id="laneItem">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+      </datalist>
     </div>
+
     <div>
       <label for="video">video</label
-      ><input width="30" height="10" id="video" [(ngModel)]="model.video" />
+      ><input
+        width="30"
+        height="10"
+        id="video"
+        list="videoItem"
+        [(ngModel)]="model.video"
+      /><datalist id="videoItem">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+      </datalist>
     </div>
     <div>
       <label for="lorr">lorr</label
-      ><input width="30" height="10" id="lorr" [(ngModel)]="model.lorr" />
+      ><input
+        width="30"
+        height="10"
+        id="lorr"
+        list="lorrItem"
+        [(ngModel)]="model.lorr"
+      /><datalist id="lorrItem">
+        <option>left</option>
+        <option>right</option>
+      </datalist>
     </div>
     <div>
       <label for="degree">degree</label
