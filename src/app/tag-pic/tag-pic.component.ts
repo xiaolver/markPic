@@ -178,6 +178,7 @@ export class TagPicComponent implements OnInit {
     }
     console.log(this);
     console.log('getscope', this.getscope);
+    var mod=this.model;
     this.getscope
       .getScope(this.model.crane, this.model.lane)
       .subscribe(function (data): void {
@@ -187,7 +188,7 @@ export class TagPicComponent implements OnInit {
         const str = JSON.stringify(data);
         console.log('str ', str, typeof str);
         let json = JSON.parse(str).info;
-        const svideo = 'video' + this.model.video;
+        const svideo = 'video' + mod.video;
         console.log('json', json[svideo]);
         json = json[svideo];
         console.log('xmin', json.x_min);
@@ -195,11 +196,11 @@ export class TagPicComponent implements OnInit {
         console.log('ymin', json.y_min);
         console.log('ymax', json.y_max);
         console.log('degree', json.degree);
-        this.model.xmin = json.x_min;
-        this.model.xmax = json.x_max;
-        this.model.ymin = json.y_min;
-        this.model.ymax = json.y_max;
-        this.model.degree = json.degree;
+        mod.xmin = json.x_min;
+        mod.xmax = json.x_max;
+        mod.ymin = json.y_min;
+        mod.ymax = json.y_max;
+        mod.degree = json.degree;
       });
 
     console.log('setfanweiEnd');
