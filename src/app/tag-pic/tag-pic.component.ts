@@ -169,7 +169,7 @@ export class TagPicComponent implements OnInit {
       (
         {
                   "qc"  :this.model.crane,
-                  "lane":this.model.lane,
+                  "line":this.model.lane,
                   "video":this.model.video,
                   "degree": this.model.degree,
                   "x_min": this.model.xmin,
