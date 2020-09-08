@@ -11,7 +11,7 @@
         />
       </div>
       <div>
-        <button (click)="getImgbyHttp()">getimagebyHttp</button>
+        <button (click)="getImgbyHttp()">显示地址图片</button>
       </div>
       <div>
         <div>
@@ -28,14 +28,14 @@
             <span
               style="font-size: 12px; cursor: pointer"
               (click)="uploadInput.click()"
-              >上传文件：</span
+              >点击我上传文件：</span
             >
           </div>
         </div>
       </div>
 
       <div>
-        <button (click)="getImgbyPath()">getimagebyPath</button>
+        <button (click)="getImgbyPath()">显示本地图片</button>
       </div>
     </div>
   </div>
@@ -142,8 +142,10 @@
       ><input width="30" height="10" id="ymax" [(ngModel)]="model.ymax" />
     </div>
   </div>
-  <button (click)="setfanwei()">getScope</button>
-  <div id="db"><button (click)="clip()">clip</button></div>
+  <button (click)="setfanwei()">获取范围坐标</button>
+  <div id="db"><button (click)="clip()">显示坐标图片</button></div>
+  <span>导出的json</span>
+  <input type="text" id="exportJson" [(ngModel)]="model.exporttext">
   <div *ngFor="let imgurl of model.imgurls; let i = index">
     <img #pic [src]="imgurl" />
     <canvas #canvasshowpic></canvas>

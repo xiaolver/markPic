@@ -41,6 +41,7 @@ export class TagPicComponent implements OnInit {
     ymin: string;
     ymax: string;
     imgurls: object[];
+    exporttext:string;
   };
   ngOnInit(): void {
     // this.setfanwei();
@@ -63,6 +64,7 @@ export class TagPicComponent implements OnInit {
       ymin: '',
       ymax: '',
       imgurls: [],
+      exporttext: '',
     };
     console.log('come in constructor');
     console.log(this.getscope);
@@ -160,6 +162,32 @@ export class TagPicComponent implements OnInit {
       // 在标注图上画框，应该在画裁剪旋转图后，否则裁剪旋转图上会有边框
       ctxpic.rect(x_min, y_min, x_max - x_min, y_max - y_min);
       ctxpic.stroke();
+
+      //
+      var cranestr="crane"+this.model.crane;
+      var lanestr="lane"+this.model.lane;
+      var videostr="video"+this.model.video;
+      this.model.exporttext=JSON.stringify
+      
+      (
+        {
+          cranestr: {
+            lanestr: {
+              
+              videostr:{
+                  "degree": this.model.degree,
+                  "x_min": this.model.xmin,
+                  "x_max": this.model.xmax,
+                  "y_min": this.model.ymin,
+                  "y_max": this.model.ymax
+                }
+                
+              
+            }
+          
+          }
+       }
+      );
       // ctx.drawImage(image,0,0,image.width,image.height,0,0,image.width,image.height);
       // c
       //
@@ -225,4 +253,5 @@ export class TagPicComponent implements OnInit {
     };
     image.src = this.model.picurl;
   }
+  
 }
