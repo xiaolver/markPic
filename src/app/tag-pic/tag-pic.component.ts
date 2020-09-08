@@ -164,29 +164,24 @@ export class TagPicComponent implements OnInit {
       ctxpic.stroke();
 
       //
-      var cranestr="crane"+this.model.crane;
-      var lanestr="lane"+this.model.lane;
-      var videostr="video"+this.model.video;
       this.model.exporttext=JSON.stringify
       
       (
         {
-          cranestr: {
-            lanestr: {
-              
-              videostr:{
+                  "qc"  :this.model.crane,
+                  "lane":this.model.lane,
+                  "video":this.model.video,
                   "degree": this.model.degree,
                   "x_min": this.model.xmin,
                   "x_max": this.model.xmax,
                   "y_min": this.model.ymin,
                   "y_max": this.model.ymax
-                }
+                
                 
               
-            }
+            
           
           }
-       }
       );
       // ctx.drawImage(image,0,0,image.width,image.height,0,0,image.width,image.height);
       // c
