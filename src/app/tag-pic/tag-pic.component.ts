@@ -29,6 +29,8 @@ export class TagPicComponent implements OnInit {
   private readonly canvasshowpicsRef: QueryList<ElementRef<HTMLCanvasElement>>;
   @ViewChildren('canvasclip')
   private readonly canvasclipsRef: QueryList<ElementRef<HTMLCanvasElement>>;
+  @ViewChildren('newRecord')
+  private newrecordRef:QueryList<ElementRef<HTMLDivElement>>;
   model: {
     picurl: string;
     crane: string;
@@ -42,6 +44,11 @@ export class TagPicComponent implements OnInit {
     ymax: string;
     imgurls: object[];
     exporttext:string;
+    down:boolean;
+    drawxmin:string;
+    drawymin:string;
+    drawxmax:string;
+    drawymax:string;
   };
   ngOnInit(): void {
     // this.setfanwei();
@@ -59,12 +66,17 @@ export class TagPicComponent implements OnInit {
       video: '',
       lorr: '',
       degree: '',
-      xmin: '',
+      xmin: '9999',
       xmax: '',
-      ymin: '',
+      ymin: '9999',
       ymax: '',
-      imgurls: [],
+      imgurls: [],  
       exporttext: '',
+      down:false,
+      drawxmin:'9999',
+    drawymin:'9999',
+    drawxmax:'',
+    drawymax:'',
     };
     console.log('come in constructor');
     console.log(this.getscope);
@@ -248,5 +260,48 @@ export class TagPicComponent implements OnInit {
     };
     image.src = this.model.picurl;
   }
-  
+  drawnewrect(e):void{
+      
+      console.log(e.currentTarget.my);
+      console.log("监听图片上的事件");
+      console.log("e",e);
+      console.log(this.model.down);
+      var xmin,ymin;
+      xmin=e.offsetX;
+      ymin=e.offsetY;
+      if(this.model.down===true){this.model.drawxmax=xmin;this.model.drawymax=ymin;this.model.down=!(this.model.down);
+
+        this.model.xmin=String(Math.min(Number(this.model.drawxmin),Number(this.model.xmin)));
+        this.model.xmax=String(Math.max(Number(this.model.drawxmax),Number(this.model.xmax)));
+        this.model.ymin=String(Math.min(Number(this.model.drawymin),Number(this.model.ymin)));
+        this.model.ymax=String(Math.max(Number(this.model.drawymax),Number(this.model.ymax)));
+        return;}
+      this.model.down=!(this.model.down);
+      console.log("draw rect xmin",xmin);
+      console.log("draw rect ymin",ymin);
+      this.model.drawxmin=xmin;
+      this.model.drawymin=ymin;
+  }
+  over(e):void{
+    if(this.model.down===false)return;
+      console.log(e.currentTarget.my);
+      var index=e.currentTarget.my;
+      const canvasRefs = this.canvasshowpicsRef.toArray();
+      var x_max,y_max;
+      x_max=e.offsetX;
+      y_max=e.offsetY;
+      var canvas=canvasRefs[index].nativeElement;
+      var ctx=canvas.getContext('2d');
+      var x_min,y_min;
+      x_min=this.model.drawxmin;
+      y_min=this.model.drawymin;
+      this.model.drawxmax=x_max;
+      this.model.drawymax=y_max;
+      console.log("xy",x_min);
+      console.log("xy",x_max);
+      console.log("xy",y_min);
+      console.log("xy",y_max);
+      ctx.rect(x_min, y_min, x_max - x_min, y_max - y_min);
+      ctx.stroke();
+  }
 }

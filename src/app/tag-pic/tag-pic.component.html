@@ -147,8 +147,9 @@
   <span>导出的json</span>
   <input type="text" id="exportJson" [(ngModel)]="model.exporttext">
   <div *ngFor="let imgurl of model.imgurls; let i = index">
-    <img #pic [src]="imgurl" />
-    <canvas #canvasshowpic></canvas>
+    <img #pic  [src]="imgurl" />
+    <div #newRecord [id]="i"></div>
+    <canvas #canvasshowpic (click)="drawnewrect($event)" [my]="i" (mousemove)="over($event)"></canvas>
     <canvas #canvasclip width="1440" height="960"></canvas>
   </div>
 </div>
