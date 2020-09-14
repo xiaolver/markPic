@@ -5,6 +5,6 @@ RUN apt-get update
 RUN apt-get install -y npm
 RUN npm install -g http-server
 
-ADD ./dist/getPic /work
+ADD ./emm /work
 WORKDIR /work
 CMD http-server -p 4200

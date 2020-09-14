@@ -67,16 +67,16 @@ export class TagPicComponent implements OnInit {
       lorr: '',
       degree: '',
       xmin: '9999',
-      xmax: '',
+      xmax: '0',
       ymin: '9999',
-      ymax: '',
+      ymax: '0',
       imgurls: [],  
       exporttext: '',
       down:false,
       drawxmin:'9999',
     drawymin:'9999',
-    drawxmax:'',
-    drawymax:'',
+    drawxmax:'0',
+    drawymax:'0',
     };
     console.log('come in constructor');
     console.log(this.getscope);
@@ -269,18 +269,28 @@ export class TagPicComponent implements OnInit {
       var xmin,ymin;
       xmin=e.offsetX;
       ymin=e.offsetY;
+
       if(this.model.down===true){this.model.drawxmax=xmin;this.model.drawymax=ymin;this.model.down=!(this.model.down);
 
+        this.model.drawxmax=xmin;
+        this.model.drawymax=ymin;
         this.model.xmin=String(Math.min(Number(this.model.drawxmin),Number(this.model.xmin)));
         this.model.xmax=String(Math.max(Number(this.model.drawxmax),Number(this.model.xmax)));
         this.model.ymin=String(Math.min(Number(this.model.drawymin),Number(this.model.ymin)));
         this.model.ymax=String(Math.max(Number(this.model.drawymax),Number(this.model.ymax)));
+        if((Number)(this.model.xmax)-(Number)(this.model.xmin)>(Number)(this.model.ymax)-(Number)(this.model.ymin))
+        {
+          this.model.ymin=String(-(Number)(this.model.xmax)+(Number)(this.model.xmin)+(Number)(this.model.ymax));
+        }
+        else
+        this.model.xmin=String(-(Number)(this.model.ymax)+(Number)(this.model.ymin)+(Number)(this.model.xmax));
         return;}
       this.model.down=!(this.model.down);
-      console.log("draw rect xmin",xmin);
-      console.log("draw rect ymin",ymin);
+
       this.model.drawxmin=xmin;
       this.model.drawymin=ymin;
+      console.log("draw rect xmin",xmin);
+      console.log("draw rect ymin",ymin);
   }
   over(e):void{
     if(this.model.down===false)return;
